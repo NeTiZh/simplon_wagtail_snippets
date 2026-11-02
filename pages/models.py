@@ -37,12 +37,27 @@ class Cour(models.Model):  # dit à wagtail que ce modèle doit apparaitre dans 
     def __str__(self):
         return self.name
     
+@register_snippet
+class Formule(models.Model):
 
+    name = models.CharField(max_length=100)
+    price = models.DecimalField(max_digits=6,decimal_places=2,help_text="ex: 12.50 pas plus que 6 chiffres")
+    description = models.TextField(max_length=255,blank=True)
+
+    panels = [
+        FieldPanel("name"),
+        FieldPanel("price"),
+        FieldPanel("description")
+            ]
+
+    def __str__(self):
+        return self.name
 
 class CoursPage(Page):
     def get_context(self, request): #get context permet de construire les données envoyées à cette page 
         context = super().get_context(request)
         context["cours_list"] = Cour.objects.all()
+        context["formule_list"] = Formule.objects.all()
         return context # renvoie les données complet
 
 @register_snippet

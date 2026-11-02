@@ -19,6 +19,18 @@
         </li>
         {% endfor %}
     </ul>
+    <section>
+        <h2>Nos formules :</h2>
+        <ul class="formule-list">
+            {% for  formule in formule_list %}
+            <li class="formule-card"> 
+                <h3>{{formule.name}}</h3>
+                <p>{{formule.price|floatformat:"-2"}} €</p>
+                <p>{{formule.description}}.</p>
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
 </div>
 
 {% endblock content %}

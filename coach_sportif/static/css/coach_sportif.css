@@ -81,14 +81,14 @@ main, .content {
     font-size: 1.1rem;
 }
 
-.cours-list, .faq-list {
+.cours-list, .faq-list, .formule-list {
     list-style: none;
     padding: 0;
     display: grid;
     gap: 1.5rem;
 }
 
-.cours-card, .faq-card {
+.cours-card, .faq-card, .formule-card {
     background: var(--navy-light);
     color: var(--text-light);
     border-radius: 8px;
@@ -96,7 +96,7 @@ main, .content {
     border-left: 5px solid var(--orange);
 }
 
-.cours-card h3, .faq-card h3 {
+.cours-card h3, .faq-card h3, .formule-card h3 {
     margin-top: 0;
     color: var(--orange-light);
 }
