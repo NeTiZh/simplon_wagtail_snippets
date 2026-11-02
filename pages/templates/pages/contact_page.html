@@ -4,16 +4,6 @@
 
 {% block content %}
 
-<header>
-    <strong>Coach Max</strong>
-    <nav>
-        <a href="/">Accueil</a>
-        <a href="/le-coach/">Le Coach</a>
-        <a href="/nos-cours/">Nos cours</a>
-        <a href="/contact/">Contact</a>
-    </nav>
-</header>
-
 <div class="content">
     <h1>Contact</h1>
 
@@ -24,6 +14,17 @@
 
     <p><strong>Téléphone :</strong> 05 56 00 00 00</p>
     <p><strong>Email :</strong> contact@coach-max.fr</p>
+    <section>
+        <h2> Questions fréquentes :</h2>
+        <ul class="faq-list">
+            {% for faq in faq_list %}
+            <li class="faq-card">
+                <h3>{{faq.question}}</h3>
+                <p>{{faq.answer}}</p>
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
 </div>
 
 {% endblock content %}
