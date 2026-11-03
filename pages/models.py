@@ -122,3 +122,42 @@ class Footer(models.Model):
 
     def __str__(self):
         return self.name
+
+class CoachsIndexPage(Page):
+
+    intro = RichTextField(blank=True)
+
+    content_panels = Page.content_panels + [
+        FieldPanel("intro")
+    ]
+
+    #sous cette page on ne pourras ajouter que des fiches de coach
+    subpage_types = ["pages.CoachProfilPage"]
+
+    def get_context(self, request):
+        context = super().get_context(request)
+        context["coachs"] = CoachProfilPage.objects.child_of(self).live()
+
+        return context
+
+class CoachProfilPage(Page):
+
+    specialite = models.CharField(max_length=100, blank=True)
+    nom = models.CharField(max_length=50)
+    photo = models.ForeignKey(
+        "wagtailimages.Image",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+    )
+    bio = RichTextField(max_length=100, blank=True)
+
+    content_panels = Page.content_panels + [
+        FieldPanel("specialite"),
+        FieldPanel("nom"),
+        FieldPanel("photo"),
+        FieldPanel("bio")
+    ]
+
+    parent_page_types = ["pages.CoachsIndexPage"]
