@@ -31,6 +31,17 @@
             {% endfor %}
         </ul>
     </section>
+    <section>
+        <h2> Questions fréquentes :</h2>
+        <ul class="faq-list">
+            {% for faq in faq_list %}
+            <li class="faq-card">
+                <h3>{{faq.question}} ?</h3>
+                <p>{{faq.answer}}.</p>
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
 </div>
 
 {% endblock content %}
